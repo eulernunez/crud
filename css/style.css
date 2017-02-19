@@ -1,0 +1,53 @@
+/* 
+    Document   : style
+    Created on : 19-feb-2017, 15:13:31
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* Header */    
+.header
+{
+    width:100%;
+    margin-top:5px;
+    background:#ffffff;
+   
+}
+
+/*Menu */
+.top_menu ul
+{
+    list-style:none;
+    float:left;
+    padding: 2%;
+    width:100%;
+    margin-left: -20px;
+}
+ 
+.top_menu ul li
+{
+    float:left;
+    margin-right:2px;
+    margin-bottom:10px;
+    background: #cccccc;
+    padding:8px;
+    /*border-radius: 15%;*/
+}
+
+.top_menu ul li a
+{
+    color: #FFFFFF;
+    text-decoration:none;
+}
+
+.top_menu ul li a:hover
+{
+    color: blue;
+}
+
+/*Table form*/
+
+.table-form 
+{
+    width: 60%;
+}

@@ -39,22 +39,29 @@ class Users_model extends CI_Model {
         $roles = $this->input->post('roles');
 
         if ($id == 0) {
-            
-            $result = $this->db->insert('users', $data);
-            if(!$result) {
-                return false;
-            }
-            $last_id = $this->db->insert_id();
-            return $this->insert_roles_user($roles, $last_id);
+            try {
+                $result = $this->db->insert('users', $data);
+                if(!$result) {
+                    return false;
+                }
+                $last_id = $this->db->insert_id();
+                return $this->insert_roles_user($roles, $last_id);
+            } catch (Exception $e) {
+                echo $e->errorMessage();
+            } 
             
         } else {
-            $this->db->where('id', $id);
-            $result = $this->db->update('users', $data);
-            if(!$result) {
-                return false;
+            try {
+                $this->db->where('id', $id);
+                $result = $this->db->update('users', $data);
+                if(!$result) {
+                    return false;
+                }
+                $this->delete_roles_user($id);
+                return $this->insert_roles_user($roles, $id);
+            } catch (Exception $e) {
+                echo $e->errorMessage();
             }
-            $this->delete_roles_user($id);
-            return $this->insert_roles_user($roles, $id);
         }
 
     }
